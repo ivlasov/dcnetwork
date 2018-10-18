@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "787D90412179338C0058D6CF"
-               BuildableName = "DCNetwork_tvOS.framework"
+               BuildableName = "DCNetwork.framework"
                BlueprintName = "DCNetwork-tvOS"
                ReferencedContainer = "container:DCNetwork.xcodeproj">
             </BuildableReference>
@@ -46,7 +46,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "787D90412179338C0058D6CF"
-            BuildableName = "DCNetwork_tvOS.framework"
+            BuildableName = "DCNetwork.framework"
             BlueprintName = "DCNetwork-tvOS"
             ReferencedContainer = "container:DCNetwork.xcodeproj">
          </BuildableReference>
@@ -64,7 +64,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "787D90412179338C0058D6CF"
-            BuildableName = "DCNetwork_tvOS.framework"
+            BuildableName = "DCNetwork.framework"
             BlueprintName = "DCNetwork-tvOS"
             ReferencedContainer = "container:DCNetwork.xcodeproj">
          </BuildableReference>

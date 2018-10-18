@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "787D9027217933730058D6CF"
-               BuildableName = "DCNetwork_macOS.framework"
+               BuildableName = "DCNetwork.framework"
                BlueprintName = "DCNetwork-macOS"
                ReferencedContainer = "container:DCNetwork.xcodeproj">
             </BuildableReference>
@@ -46,7 +46,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "787D9027217933730058D6CF"
-            BuildableName = "DCNetwork_macOS.framework"
+            BuildableName = "DCNetwork.framework"
             BlueprintName = "DCNetwork-macOS"
             ReferencedContainer = "container:DCNetwork.xcodeproj">
          </BuildableReference>
@@ -64,7 +64,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "787D9027217933730058D6CF"
-            BuildableName = "DCNetwork_macOS.framework"
+            BuildableName = "DCNetwork.framework"
             BlueprintName = "DCNetwork-macOS"
             ReferencedContainer = "container:DCNetwork.xcodeproj">
          </BuildableReference>

@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "787D90342179337D0058D6CF"
-               BuildableName = "DCNetwork_watchOS.framework"
+               BuildableName = "DCNetwork.framework"
                BlueprintName = "DCNetwork-watchOS"
                ReferencedContainer = "container:DCNetwork.xcodeproj">
             </BuildableReference>
@@ -46,7 +46,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "787D90342179337D0058D6CF"
-            BuildableName = "DCNetwork_watchOS.framework"
+            BuildableName = "DCNetwork.framework"
             BlueprintName = "DCNetwork-watchOS"
             ReferencedContainer = "container:DCNetwork.xcodeproj">
          </BuildableReference>
@@ -64,7 +64,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "787D90342179337D0058D6CF"
-            BuildableName = "DCNetwork_watchOS.framework"
+            BuildableName = "DCNetwork.framework"
             BlueprintName = "DCNetwork-watchOS"
             ReferencedContainer = "container:DCNetwork.xcodeproj">
          </BuildableReference>
