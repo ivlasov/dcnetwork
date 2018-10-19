@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		7867192E21799D3A00457048 /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7867192D21799D3A00457048 /* HTTP.swift */; };
+		7867193321799F3300457048 /* DCLog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 787D9085217934B10058D6CF /* DCLog.framework */; };
+		7867193421799F3300457048 /* DCLog.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 787D9085217934B10058D6CF /* DCLog.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7867193521799F3300457048 /* DCUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 787D9086217934B10058D6CF /* DCUtils.framework */; };
+		7867193621799F3300457048 /* DCUtils.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 787D9086217934B10058D6CF /* DCUtils.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7867193821799F3600457048 /* DCNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 787D901B2179336A0058D6CF /* DCNetwork.framework */; };
+		7867193921799F3600457048 /* DCNetwork.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 787D901B2179336A0058D6CF /* DCNetwork.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		787D901F2179336A0058D6CF /* DCNetwork_iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 787D901D2179336A0058D6CF /* DCNetwork_iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		787D902C217933740058D6CF /* DCNetwork_macOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 787D902A217933740058D6CF /* DCNetwork_macOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		787D90392179337D0058D6CF /* DCNetwork_watchOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 787D90372179337D0058D6CF /* DCNetwork_watchOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -54,6 +60,32 @@
 		787D9093217934D30058D6CF /* DCLog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 787D9091217934D30058D6CF /* DCLog.framework */; };
 		787D9094217934D30058D6CF /* DCUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 787D9092217934D30058D6CF /* DCUtils.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7867193A21799F3600457048 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 787D9002217932B30058D6CF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 787D901A2179336A0058D6CF;
+			remoteInfo = "DCNetwork-iOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7867193721799F3400457048 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				7867193921799F3600457048 /* DCNetwork.framework in Embed Frameworks */,
+				7867193421799F3300457048 /* DCLog.framework in Embed Frameworks */,
+				7867193621799F3300457048 /* DCUtils.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		7867192D21799D3A00457048 /* HTTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTP.swift; sourceTree = "<group>"; };
@@ -134,12 +166,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7867193821799F3600457048 /* DCNetwork.framework in Frameworks */,
+				7867193321799F3300457048 /* DCLog.framework in Frameworks */,
+				7867193521799F3300457048 /* DCUtils.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7867192F21799F0200457048 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		787D9001217932B30058D6CF = {
 			isa = PBXGroup;
 			children = (
@@ -150,6 +192,7 @@
 				787D90432179338C0058D6CF /* DCNetwork-tvOS */,
 				787D904F2179339A0058D6CF /* TestApp-iOS */,
 				787D900C217932B30058D6CF /* Products */,
+				7867192F21799F0200457048 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -370,10 +413,12 @@
 				787D904A2179339A0058D6CF /* Sources */,
 				787D904B2179339A0058D6CF /* Frameworks */,
 				787D904C2179339A0058D6CF /* Resources */,
+				7867193721799F3400457048 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				7867193B21799F3600457048 /* PBXTargetDependency */,
 			);
 			name = "TestApp-iOS";
 			productName = "TestApp-iOS";
@@ -542,6 +587,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7867193B21799F3600457048 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 787D901A2179336A0058D6CF /* DCNetwork-iOS */;
+			targetProxy = 7867193A21799F3600457048 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		787D90542179339A0058D6CF /* Main.storyboard */ = {
@@ -950,8 +1003,13 @@
 		787D905E2179339B0058D6CF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "TestApp-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -967,8 +1025,13 @@
 		787D905F2179339B0058D6CF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "TestApp-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

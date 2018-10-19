@@ -5,27 +5,25 @@
 import Foundation
 import DCUtils
 
-extension Network {
-    public class Multipart {
-        public struct Item {
-            
-            let key         : String
-            let value       : Data
-            let mimeType    : String?
-            let fileName    : String?
-            
-            public init(key: String, value: Data, mimeType: String? = nil, fileName: String? = nil) {
-                self.key = key
-                self.value = value
-                self.mimeType = mimeType
-                self.fileName = fileName
-            }
-            
+public class Multipart {
+    public struct Item {
+        
+        let key         : String
+        let value       : Data
+        let mimeType    : String?
+        let fileName    : String?
+        
+        public init(key: String, value: Data, mimeType: String? = nil, fileName: String? = nil) {
+            self.key = key
+            self.value = value
+            self.mimeType = mimeType
+            self.fileName = fileName
         }
+        
     }
 }
 
-extension Network.Multipart {
+extension Multipart {
     public class Builder {
         
         public let boundary = "Boundary_" + NSUUID().uuidString

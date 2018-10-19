@@ -70,14 +70,14 @@ extension HTTP {
                 case .json:
                     request.httpBody = try? JSONSerialization.data(withJSONObject: values, options: .prettyPrinted)
                 case .multipartFormData:
-                    let multipart = Network.Multipart.Builder(values: values)
+                    let multipart = Multipart.Builder(values: values)
                     request.addValue(contentType.rawValue + ";boundary=\(multipart.boundary)", forHTTPHeaderField: "Content-Type")
                     request.httpBody = multipart.buildData()
                     break
                 default: break
                 }
-            } else if let items = body as? [Network.Multipart.Item] {
-                let multipart = Network.Multipart.Builder(items: items)
+            } else if let items = body as? [Multipart.Item] {
+                let multipart = Multipart.Builder(items: items)
                 request.addValue(contentType.rawValue + ";boundary=\(multipart.boundary)", forHTTPHeaderField: "Content-Type")
                 request.httpBody = multipart.buildData()
             }
@@ -120,7 +120,7 @@ extension HTTP {
     }
 }
 
-extension Network.HTTP.Request: LogDescription {
+extension HTTP.Request: LogDescription {
     public func logDescription() -> String {
         return ""
     }

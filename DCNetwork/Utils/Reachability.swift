@@ -17,7 +17,7 @@ func callback(reachability:SCNetworkReachability, flags: SCNetworkReachabilityFl
     
     guard let info = info else { return }
     
-    let reachability = Unmanaged<Network.Reachability>.fromOpaque(info).takeUnretainedValue()
+    let reachability = Unmanaged<Reachability>.fromOpaque(info).takeUnretainedValue()
     
     DispatchQueue.main.async {
         reachability.reachabilityChanged()
@@ -25,6 +25,9 @@ func callback(reachability:SCNetworkReachability, flags: SCNetworkReachabilityFl
 }
 
 public class Reachability {
+    
+    public static let didChange = Notification.Name("Reachability_didChange")
+    
     public typealias NetworkReachable = (Reachability) -> ()
     public typealias NetworkUnreachable = (Reachability) -> ()
     
@@ -43,14 +46,13 @@ public class Reachability {
         }
     }
     
-    static var internetReachability: Reachability?
+    static let internetReachability = Reachability()
     
     public static var internet: Reachability {
-        if let item = internetReachability {return item}
-        let item = Reachability()
-        try? item.startNotifier()
-        internetReachability = item
-        return item
+        if !internetReachability.notifierRunning {
+            try? internetReachability.startNotifier()
+        }
+        return internetReachability
     }
     
     public var whenReachable: NetworkReachable?
@@ -80,7 +82,6 @@ public class Reachability {
     fileprivate let queue = DispatchQueue(label: "com.dcfoundation.reachability")
     
     public init?(hostname: String) {
-        
         guard let ref = SCNetworkReachabilityCreateWithName(nil, hostname) else { return nil }
         reachableOnWWAN = true
         self.reachabilityRef = ref
@@ -91,7 +92,9 @@ public class Reachability {
         zeroAddress.sa_len = UInt8(MemoryLayout<sockaddr>.size)
         zeroAddress.sa_family = sa_family_t(AF_INET)
         
-        if let ref: SCNetworkReachability = withUnsafePointer(to: &zeroAddress, { SCNetworkReachabilityCreateWithAddress(nil, UnsafePointer($0)) }) {
+        if let ref: SCNetworkReachability = withUnsafePointer(to: &zeroAddress, {
+            SCNetworkReachabilityCreateWithAddress(nil, UnsafePointer($0))
+        }) {
             self.reachabilityRef = ref
         } else {
             self.reachabilityRef = nil
@@ -131,18 +134,17 @@ public class Reachability {
     }
     
     var isReachable: Bool {
-        guard
-            isReachableFlagSet,
-            !isConnectionRequiredAndTransientFlagSet,
-            !(isRunningOnDevice && isOnWWANFlagSet && !reachableOnWWAN)
-        else { return false }
+        guard isReachableFlagSet else { return false }
+        if isConnectionRequiredAndTransientFlagSet { return false }
+        if isRunningOnDevice { if isOnWWANFlagSet && !reachableOnWWAN { return false } }
         return true
     }
     
     var isReachableViaWWAN: Bool { return isRunningOnDevice && isReachableFlagSet && isOnWWANFlagSet }
     
     var isReachableViaWiFi: Bool {
-        guard isReachableFlagSet, isRunningOnDevice else { return false }
+        guard isReachableFlagSet else { return false }
+        guard isRunningOnDevice else { return true }
         return !isOnWWANFlagSet
     }
 }
@@ -154,7 +156,7 @@ fileprivate extension Reachability {
         guard previousFlags != flags else { return }
         let block = isReachable ? whenReachable : whenUnreachable
         block?(self)
-        Notification.post(name: .reachabilityDidChange, object: self)
+        Notification.post(name: Reachability.didChange, object: self)
         previousFlags = flags
     }
     

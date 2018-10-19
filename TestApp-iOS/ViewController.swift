@@ -9,7 +9,11 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        Notification.subscribe(name: .reachabilityDidChange, object: <#T##AnyObject?#>, queue: <#T##OperationQueue?#>, <#T##handler: ((Notification) -> Void)##((Notification) -> Void)##(Notification) -> Void#>)
+        let request = HTTP.Request(url: URL(string: "http://google.com")!)
+        request.shouldHandleCookies = true
+        HTTP.Session.shared.send(request: request) { (response) in
+            print(response)
+        }
     }
     
 }
