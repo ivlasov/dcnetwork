@@ -4,7 +4,7 @@
 
 import Foundation
 
-extension Network.HTTP {
+extension HTTP {
     open class Response {
 
         fileprivate let response    : HTTPURLResponse?

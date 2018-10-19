@@ -6,7 +6,7 @@ import Foundation
 import DCUtils
 import DCLog
 
-extension Network.HTTP {
+extension HTTP {
     open class Request {
         
         public enum ContentType: String {

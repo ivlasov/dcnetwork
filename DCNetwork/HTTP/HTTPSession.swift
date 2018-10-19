@@ -5,7 +5,7 @@
 import Foundation
 import DCUtils
 
-extension Network.HTTP {
+extension HTTP {
     open class Session: NSObject, URLSessionDelegate {
 
         public static let shared = Session()
