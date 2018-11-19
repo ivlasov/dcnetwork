@@ -9,13 +9,6 @@ import DCLog
 extension HTTP {
     open class Request {
         
-        public enum ContentType: String {
-            case formURLEncoded     = "application/x-www-form-urlencoded"
-            case multipartFormData  = "multipart/form-data"
-            case json               = "application/json"
-            case custom             = "custom"
-        }
-        
         public enum Method: String {
             case post   = "POST"
             case get    = "GET"
@@ -30,7 +23,7 @@ extension HTTP {
         public var method               : Method
         public var body                 : Any?
         public var query                : [String:Any]?
-        public var contentType          = ContentType.custom
+        public var contentType          : HTTP.ContentType?
         public var shouldHandleCookies  = false
         public var isLoggingEnabled     = true
         
@@ -60,26 +53,26 @@ extension HTTP {
             for (key,value) in headers {
                 request.addValue(value, forHTTPHeaderField: key)
             }
-            if contentType != .custom {
-                request.addValue(contentType.rawValue, forHTTPHeaderField: "Content-Type")
-            }
             if let body = body as? Data {
                 request.httpBody = body
-            } else if let values = body as? [String:Any] {
-                switch contentType {
-                case .json:
-                    request.httpBody = try? JSONSerialization.data(withJSONObject: values, options: .prettyPrinted)
-                case .multipartFormData:
-                    let multipart = Multipart.Builder(values: values)
-                    request.addValue(contentType.rawValue + ";boundary=\(multipart.boundary)", forHTTPHeaderField: "Content-Type")
+            } else {
+                if let values = body as? [String:Any], let contentType = contentType {
+                    request.addValue(contentType.rawValue, forHTTPHeaderField: "Content-Type")
+                    switch contentType {
+                    case .json:
+                        request.httpBody = try? JSONSerialization.data(withJSONObject: values, options: .prettyPrinted)
+                    case .multipartFormData:
+                        let multipart = Multipart.Builder(values: values)
+                        request.addValue(contentType.rawValue + ";boundary=\(multipart.boundary)", forHTTPHeaderField: "Content-Type")
+                        request.httpBody = multipart.buildData()
+                        break
+                    default: break
+                    }
+                } else if let items = body as? [Multipart.Item] {
+                    let multipart = Multipart.Builder(items: items)
+                    request.setValue("\(ContentType.multipartFormData.rawValue);boundary=\(multipart.boundary)", forHTTPHeaderField: "Content-Type")
                     request.httpBody = multipart.buildData()
-                    break
-                default: break
                 }
-            } else if let items = body as? [Multipart.Item] {
-                let multipart = Multipart.Builder(items: items)
-                request.addValue(contentType.rawValue + ";boundary=\(multipart.boundary)", forHTTPHeaderField: "Content-Type")
-                request.httpBody = multipart.buildData()
             }
             return request
         }

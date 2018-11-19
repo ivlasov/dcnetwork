@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		78545CAB217E588C001F68FC /* HTTPContentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78545CAA217E588C001F68FC /* HTTPContentType.swift */; };
 		7867192E21799D3A00457048 /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7867192D21799D3A00457048 /* HTTP.swift */; };
 		7867193321799F3300457048 /* DCLog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 787D9085217934B10058D6CF /* DCLog.framework */; };
 		7867193421799F3300457048 /* DCLog.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 787D9085217934B10058D6CF /* DCLog.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -88,6 +89,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		78545CAA217E588C001F68FC /* HTTPContentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPContentType.swift; sourceTree = "<group>"; };
 		7867192D21799D3A00457048 /* HTTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTP.swift; sourceTree = "<group>"; };
 		787D901B2179336A0058D6CF /* DCNetwork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DCNetwork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		787D901D2179336A0058D6CF /* DCNetwork_iOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCNetwork_iOS.h; sourceTree = "<group>"; };
@@ -289,9 +291,10 @@
 			isa = PBXGroup;
 			children = (
 				7867192D21799D3A00457048 /* HTTP.swift */,
+				787D9068217934230058D6CF /* HTTPSession.swift */,
 				787D9066217934230058D6CF /* HTTPRequest.swift */,
 				787D9067217934230058D6CF /* HTTPResponse.swift */,
-				787D9068217934230058D6CF /* HTTPSession.swift */,
+				78545CAA217E588C001F68FC /* HTTPContentType.swift */,
 			);
 			path = HTTP;
 			sourceTree = "<group>";
@@ -529,6 +532,7 @@
 				787D9069217934230058D6CF /* Network.swift in Sources */,
 				787D9079217934230058D6CF /* HTTPRequest.swift in Sources */,
 				787D9075217934230058D6CF /* MultipartBuilder.swift in Sources */,
+				78545CAB217E588C001F68FC /* HTTPContentType.swift in Sources */,
 				7867192E21799D3A00457048 /* HTTP.swift in Sources */,
 				787D9071217934230058D6CF /* Utils.swift in Sources */,
 				787D9081217934230058D6CF /* HTTPSession.swift in Sources */,
