@@ -31,15 +31,15 @@ extension HTTP {
             guard let query = query, query.count > 0 else { return "" }
             var items = [String]()
             for (key,value) in query {
-                let eKey = "\(value)".URLEncodedString()
-                items << "\(key.URLEncodedString())=\(eKey)"
+                let eKey = "\(value)".urlEncoded()
+                items << "\(key.urlEncoded())=\(eKey)"
             }
             return "?" + items.joinedBy(separator: "&")
         }
         
         public var urlRequest: URLRequest {
             var url = self.url
-            if queryString.length > 0 {
+            if queryString.count > 0 {
                 url = URL(string: self.url.absoluteString + queryString)!
             }
             var request = URLRequest(url: url)

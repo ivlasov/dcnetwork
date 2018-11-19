@@ -21,7 +21,7 @@ extension HTTP {
         }
         
         public func cancel(requestId: String?) {
-            requests.remove(predicate: {$0 == requestId})
+            requests.removeAll(where: {$0 == requestId} )
         }
         
         public func send<T:Response>(request: Request, _ handler: ((T) -> Void)?) {
