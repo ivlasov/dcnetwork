@@ -18,7 +18,7 @@ extension HTTP.ContentType: Equatable {
 }
 
 extension HTTP.ContentType {
-    static let formURLEncoded       = HTTP.ContentType("application/x-www-form-urlencoded")
-    static let multipartFormData    = HTTP.ContentType("multipart/form-data")
-    static let json                 = HTTP.ContentType("application/json")
+    public static let formURLEncoded       = HTTP.ContentType("application/x-www-form-urlencoded")
+    public static let multipartFormData    = HTTP.ContentType("multipart/form-data")
+    public static let json                 = HTTP.ContentType("application/json")
 }
